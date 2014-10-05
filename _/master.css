@@ -1,0 +1,12 @@
+.container {
+  background: #CCC;
+  height: 400px;
+  text-align: center;
+}
+.container INPUT {
+  margin: 100px 0 0 0;
+  width: 300px;
+}
+.dragOver INPUT {
+  background: green;
+}

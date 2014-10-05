@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" id="xxs" data-ng-app="xxSpot" data-drag-zone="">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>xxSpot</title>
+  <base href="/_projects/xxSpot/" />
+  <link href="_/master.css" rel="stylesheet" type="text/css" />
+</head>
+<body data-ng-controller="mainCtrl" >
+  <div class="container">
+    <form data-ng-controller="searchCtrl">
+      <input type="text" data-ng-model="searchInput" data-drop-zone="" /><br />
+      {{searchInput}}
+    </form>
+    
+  </div>
+
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-route.min.js"></script>
+  <script src="_/main.js"></script>
+</body>
+</html>
