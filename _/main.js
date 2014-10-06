@@ -4,22 +4,35 @@
       dragOverClass: 'dragOver'
     })
     .controller('mainCtrl', function($scope) {
-    
+      
     })
     .controller('searchCtrl', function($scope) {    
-    
+       
+       
+       
     })
-    .directive('dragZone', function(conf) {
+    .directive('xxDragZone', function() {
       return {
         restrict: 'EA'
+        ,scope: true
         ,link: function(s, e, a) {
+          var opts = {}; //make this extentable with pass in opts
+          
+          
+          opts = s.$eval(a.xxDragZone);
+          /*
+          s.$watch(a.xxDragZone, function(options) {
+            opts = options;
+          });
+          */
+          
           e.bind('drop dragover dragenter dragleave', function(event) {
             event.preventDefault();
             
             if(event.type == 'dragover') {
-              e.addClass(conf.dragOverClass);
+              e.addClass(opts.over);
             } else {
-              e.removeClass(conf.dragOverClass);
+              e.removeClass(opts.over);
             }
           });
         }
@@ -33,7 +46,8 @@
             event.preventDefault();
           }).bind('drop', function(event) {
             event.preventDefault();
-            console.log('==', event.dataTransfer.files[0]);
+            //console.log('==', event.dataTransfer.files[0]);
+            console.log('==', event.dataTransfer);
           });
           
           
