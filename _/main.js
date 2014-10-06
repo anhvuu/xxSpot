@@ -5,17 +5,28 @@
     })
     
     .controller('searchCtrl', ['$scope', function($scope) {    
-       
-       
-       
+      
     }])
     
     
-    .directive('xxDropFile', function() {
+    .factory('xxFileFact', function() {
+      
+      return 'working factory!!';
+    })
+    
+    .directive('xxDropFile', ['xxFileFact', function(xxFileFact) {
       return {
-        restrict: 'A'
-        ,scope: true
+        restrict: 'EA'
+        ,scope: {
+          'option': '@xxDropFile'
+        }
         ,link: function(scope, elm, attrs) {
+          console.log('----------link first');
+          console.log('===xxFileFact::fromt LIIIINK--::', xxFileFact);
+          console.log('+++++++++++++::', scope.option);
+          console.log('+++++++++++++::', scope.$eval(scope.option));
+          
+          
           var defaults = {
               parentElm: 'HTML'
               ,dragOverClass: 'dragOver'
@@ -39,12 +50,27 @@
           }).bind('drop', function(event) {
             event.preventDefault();
             
-            console.log('==', event.originalEvent.dataTransfer.files[0]); //originalEvent only works with jQuery
+            console.log('----- ', event.originalEvent.dataTransfer.files[0]); //originalEvent only works with jQuery
           });
           
+          console.log('y000', scope.aaazbbb);
+          scope.run(6);
         }
+        ,controller: function($scope) {
+          console.log('----------controler first');
+          $scope.aaazbbb = 'sjdkhfjsdk kdk';
+          
+          
+          console.log('===xxFileFact::fromt control---::', xxFileFact);
+          console.log('= control---::', $scope.yo);
+          
+          $scope.run = function(val) {
+            console.log(val +'running...');
+          };
+        }
+        
       };
-    })
+    }])
     
     
   ;
