@@ -34,17 +34,13 @@
             }
           });
           
-          
-          
-        /*
-          e.bind('dragover dragenter dragleave', function(event) {
+          elm.bind('dragover dragenter dragleave', function(event) {
             event.preventDefault();
           }).bind('drop', function(event) {
             event.preventDefault();
-            //console.log('==', event.dataTransfer.files[0]);
-            console.log('==', event.dataTransfer);
+            
+            console.log('==', event.originalEvent.dataTransfer.files[0]); //originalEvent only works with jQuery
           });
-        */
           
         }
       };
