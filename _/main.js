@@ -3,37 +3,39 @@
     .constant('conf', {
       dragOverClass: 'dragOver'
     })
-    .controller('mainCtrl', function($scope) {
-      
-    })
-    .controller('searchCtrl', function($scope) {    
+    
+    .controller('searchCtrl', ['$scope', function($scope) {    
        
        
        
-    })
-    .directive('xxDragZone', function() {
+    }])
+    
+    
+    .directive('xxDragZone', function() { //can i do all this with just existing directives, ngClass?
       return {
         restrict: 'A'
         ,scope: true
-        ,link: function(s, e, a) {
+        ,link: function(scope, elm, attrs) {
           var defaults = {
               dragOver: 'dragOver'
             }
-            , opts = angular.extend({}, defaults, s.$eval(a.xxDragZone))
+            , opts = angular.extend({}, defaults, scope.$eval(attrs.xxDragZone))
           ;
           
-          e.bind('drop dragover dragenter dragleave', function(event) {
+          elm.bind('drop dragover dragenter dragleave', function(event) {
             event.preventDefault();
             
             if(event.type == 'dragover') {
-              e.addClass(opts.dragOver);
+              elm.addClass(opts.dragOver);
             } else {
-              e.removeClass(opts.dragOver);
+              elm.removeClass(opts.dragOver);
             }
           });
         }
       };
     })
+    
+    
     .directive('dropZone', ['conf', function(conf) {
       return {
         restrict: 'A'
@@ -50,5 +52,7 @@
         }
       };
     }])
+    
+    
   ;
 })();

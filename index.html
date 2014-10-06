@@ -8,12 +8,13 @@
   <base href="/_projects/xxSpot/" />
   <link href="_/master.css" rel="stylesheet" type="text/css" />
 </head>
-<body data-ng-controller="mainCtrl">
+<body>
   <div class="container">
     <form data-ng-controller="searchCtrl">
-      <input type="text" data-ng-model="searchInput" data-drop-zone="" /><br />
+      <input type="text" data-ng-model="searchInput" /><br />
       {{searchInput}}
     </form>
+    <div data-xx-drop-zone="" class=""></div> <!-- combine this with drag-zone using HTML elm as wrapper -->
     
   </div>
 
