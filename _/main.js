@@ -16,22 +16,16 @@
     
     .directive('xxDropFile', ['xxFileFact', function(xxFileFact) {
       return {
-        restrict: 'EA'
+        restrict: 'A'
         ,scope: {
-          'option': '@xxDropFile'
+          'options': '@xxDropFile'
         }
         ,link: function(scope, elm, attrs) {
-          console.log('----------link first');
-          console.log('===xxFileFact::fromt LIIIINK--::', xxFileFact);
-          console.log('+++++++++++++::', scope.option);
-          console.log('+++++++++++++::', scope.$eval(scope.option));
-          
-          
           var defaults = {
               parentElm: 'HTML'
               ,dragOverClass: 'dragOver'
             }
-            ,opts = angular.extend({}, defaults, scope.$eval(attrs.xxDropFile))
+            ,opts = angular.extend({}, defaults, scope.$eval(scope.options))
             ,$parentElm = angular.element(opts.parentElm)
           ;
           
@@ -50,23 +44,10 @@
           }).bind('drop', function(event) {
             event.preventDefault();
             
-            console.log('----- ', event.originalEvent.dataTransfer.files[0]); //originalEvent only works with jQuery
+            console.log('-----ready for factory ', event.originalEvent.dataTransfer.files[0]); //originalEvent only works with jQuery
           });
           
-          console.log('y000', scope.aaazbbb);
-          scope.run(6);
-        }
-        ,controller: function($scope) {
-          console.log('----------controler first');
-          $scope.aaazbbb = 'sjdkhfjsdk kdk';
-          
-          
-          console.log('===xxFileFact::fromt control---::', xxFileFact);
-          console.log('= control---::', $scope.yo);
-          
-          $scope.run = function(val) {
-            console.log(val +'running...');
-          };
+          console.log('calling factory:: ', xxFileFact);
         }
         
       };
