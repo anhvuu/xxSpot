@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" id="xxs" data-ng-app="xxSpot" data-xx-drag-zone="">
+<html lang="en" id="xxs" data-ng-app="xxSpot">
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -14,10 +14,11 @@
       <input type="text" data-ng-model="searchInput" /><br />
       {{searchInput}}
     </form>
-    <div data-xx-drop-zone="" class=""></div> <!-- combine this with drag-zone using HTML elm as wrapper -->
+    <div data-xx-drop-file="" class="fileDrop"></div>
     
   </div>
 
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-route.min.js"></script>
   <script src="_/main.js"></script>

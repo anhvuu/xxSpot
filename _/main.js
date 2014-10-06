@@ -11,35 +11,32 @@
     }])
     
     
-    .directive('xxDragZone', function() { //can i do all this with just existing directives, ngClass?
+    .directive('xxDropFile', function() {
       return {
         restrict: 'A'
         ,scope: true
         ,link: function(scope, elm, attrs) {
           var defaults = {
-              dragOver: 'dragOver'
+              parentElm: 'HTML'
+              ,dragOverClass: 'dragOver'
             }
-            , opts = angular.extend({}, defaults, scope.$eval(attrs.xxDragZone))
+            ,opts = angular.extend({}, defaults, scope.$eval(attrs.xxDropFile))
+            ,$parentElm = angular.element(opts.parentElm)
           ;
           
-          elm.bind('drop dragover dragenter dragleave', function(event) {
+          $parentElm.bind('drop dragover dragenter dragleave', function(event) {
             event.preventDefault();
             
             if(event.type == 'dragover') {
-              elm.addClass(opts.dragOver);
+              $(this).addClass(opts.dragOverClass);
             } else {
-              elm.removeClass(opts.dragOver);
+              $(this).removeClass(opts.dragOverClass);
             }
           });
-        }
-      };
-    })
-    
-    
-    .directive('dropZone', ['conf', function(conf) {
-      return {
-        restrict: 'A'
-        ,link: function(s, e, a) {
+          
+          
+          
+        /*
           e.bind('dragover dragenter dragleave', function(event) {
             event.preventDefault();
           }).bind('drop', function(event) {
@@ -47,11 +44,11 @@
             //console.log('==', event.dataTransfer.files[0]);
             console.log('==', event.dataTransfer);
           });
-          
+        */
           
         }
       };
-    }])
+    })
     
     
   ;

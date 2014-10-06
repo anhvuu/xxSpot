@@ -10,3 +10,9 @@
 .dragOver INPUT {
   background: green;
 }
+
+.fileDrop {
+  border: solid 1px #111;
+  height: 200px;
+  width: 400px;
+}
