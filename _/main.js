@@ -13,26 +13,22 @@
     })
     .directive('xxDragZone', function() {
       return {
-        restrict: 'EA'
+        restrict: 'A'
         ,scope: true
         ,link: function(s, e, a) {
-          var opts = {}; //make this extentable with pass in opts
-          
-          
-          opts = s.$eval(a.xxDragZone);
-          /*
-          s.$watch(a.xxDragZone, function(options) {
-            opts = options;
-          });
-          */
+          var defaults = {
+              dragOver: 'dragOver'
+            }
+            , opts = angular.extend({}, defaults, s.$eval(a.xxDragZone))
+          ;
           
           e.bind('drop dragover dragenter dragleave', function(event) {
             event.preventDefault();
             
             if(event.type == 'dragover') {
-              e.addClass(opts.over);
+              e.addClass(opts.dragOver);
             } else {
-              e.removeClass(opts.over);
+              e.removeClass(opts.dragOver);
             }
           });
         }
