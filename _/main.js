@@ -18,7 +18,7 @@
       return {
         restrict: 'A'
         ,scope: {
-          'options': '@xxDropFile'
+          options: '@xxDropFile'
           ,searchStr: '='
         }
         ,link: function(scope, elm, attrs) {
@@ -45,7 +45,7 @@
           }).bind('drop', function(event) {
             event.preventDefault();
             
-            scope.searchStr += ' passed!!'; 
+            scope.searchStr = event.originalEvent.dataTransfer.files[0].name; 
             scope.$apply(); //needs this to update back to ctrl
             console.log('searchstr::', scope.searchStr, '----scope', scope);
             console.log('-----ready for factory ', event.originalEvent.dataTransfer.files[0]); //originalEvent only works with jQuery
