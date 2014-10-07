@@ -9,12 +9,14 @@
   <link href="_/master.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-  <div class="container" data-ng-controller="searchCtrl">
-    <form>
-      <input type="text" data-ng-model="searchInput" /><br />
-      {{searchInput}}
+  <div class="container">
+    <form data-ng-controller="searchCtrl">
+      <input type="text" data-ng-model="searchStr" /><br />
+      {{searchStr}}
+      
+      <div data-xx-drop-file="" data-search-str="searchStr" class="fileDrop"></div>
     </form>
-    <div data-xx-drop-file="" class="fileDrop"></div>
+    
     
   </div>
   

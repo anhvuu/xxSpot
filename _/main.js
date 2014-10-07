@@ -5,7 +5,7 @@
     })
     
     .controller('searchCtrl', ['$scope', function($scope) {    
-      
+      $scope.searchStr = '';
     }])
     
     
@@ -19,6 +19,7 @@
         restrict: 'A'
         ,scope: {
           'options': '@xxDropFile'
+          ,searchStr: '='
         }
         ,link: function(scope, elm, attrs) {
           var defaults = {
@@ -44,6 +45,9 @@
           }).bind('drop', function(event) {
             event.preventDefault();
             
+            scope.searchStr += ' passed!!'; 
+            //scope.$apply();
+            console.log('searchstr::', scope.searchStr, '----scope', scope);
             console.log('-----ready for factory ', event.originalEvent.dataTransfer.files[0]); //originalEvent only works with jQuery
           });
           
