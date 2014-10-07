@@ -46,7 +46,7 @@
             event.preventDefault();
             
             scope.searchStr += ' passed!!'; 
-            //scope.$apply();
+            scope.$apply(); //needs this to update back to ctrl
             console.log('searchstr::', scope.searchStr, '----scope', scope);
             console.log('-----ready for factory ', event.originalEvent.dataTransfer.files[0]); //originalEvent only works with jQuery
           });
