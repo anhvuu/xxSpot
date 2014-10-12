@@ -12,50 +12,48 @@
     }])
     
     
-    .controller('searchCtrl', ['$scope', '$rootScope', 'spotifyAPI', function($scope, $rootScope, spotifyAPI) {
-      $scope.searchStr = '';
-      
-      
-      
-      
-      
-      $scope.searchSubmit = function() {
-        console.log('int search::: '+ $scope.searchStr);
-        spotifyAPI.searchTrack($scope.searchStr, function(data) {
-          console.log('calling back data::', data);
-          $rootScope.tracksData = data;
-        });
-      }
-      
-    }])
+    
     
     
     
     .factory('spotifyAPI', ['$http', function($http) {
-      var factory = {}
-        ,searchResults = null
-      ;
+      var spotifyAPI = {};
       
-      factory.searchTrack = function(str, cb) {
-        $http.get('//ws.spotify.com/search/1/track.json?q='+ str)
-          .success(function(data, status, headers, config) {
-            searchResults = data;
-          })
-          .error(function(data, status, headers, config) {
-            searchResults = null;
-          })
-        ;
-        
-        return searchResults;
+      spotifyAPI.searchTrack = function(str) {
+        return $http.get('//ws.spotify.com/xxsearch/1/track.json?q='+ str);
       };
       
-      return factory;
+      return spotifyAPI;
     }])
+    
+    
     
     .factory('xxFileFact', ['$http', function($http) {
       
       return 'working factory!!';
     }])
+    
+    
+    .controller('searchCtrl', ['$scope', 'spotifyAPI', function($scope, spotifyAPI) {
+      $scope.searchStr = '';
+      
+      $scope.searchSubmit = function() {
+        console.log('int search::: '+ $scope.searchStr);
+        
+        spotifyAPI.searchTrack($scope.searchStr)
+          .success(function(data, status) {
+            console.log('got data back:::', data);
+            console.log('got status back:::', status);
+          })
+          .error(function(error, status) {
+            console.log('got error:::---', error, '---');
+            console.log('got status:::', status);
+          })
+        ;
+      }
+      
+    }])
+    
     
     .directive('xxDropFile', ['xxFileFact', function(xxFileFact) {
       return {
