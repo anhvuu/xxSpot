@@ -4,33 +4,24 @@
       dragOverClass: 'dragOver'
     })
     
-    
-    
-    .controller('mainCtrl', ['$scope', 'spotifyAPI', function($scope, spotifyAPI) {
-
-      
-    }])
-    
-    
-    
-    
-    
-    
     .factory('spotifyAPI', ['$http', function($http) {
       var spotifyAPI = {};
       
       spotifyAPI.searchTrack = function(str) {
-        return $http.get('//ws.spotify.com/xxsearch/1/track.json?q='+ str);
+        return $http.get('//ws.spotify.com/search/1/track.json?q='+ str);
       };
       
       return spotifyAPI;
     }])
     
-    
-    
     .factory('xxFileFact', ['$http', function($http) {
       
       return 'working factory!!';
+    }])
+    
+    .controller('mainCtrl', ['$scope', 'spotifyAPI', function($scope, spotifyAPI) {
+      
+      
     }])
     
     
