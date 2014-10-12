@@ -12,7 +12,7 @@
     }])
     
     
-    .controller('searchCtrl', ['$scope', 'spotifyAPI', function($scope, spotifyAPI) {
+    .controller('searchCtrl', ['$scope', '$rootScope', 'spotifyAPI', function($scope, $rootScope, spotifyAPI) {
       $scope.searchStr = '';
       
       
@@ -23,7 +23,7 @@
         console.log('int search::: '+ $scope.searchStr);
         spotifyAPI.searchTrack($scope.searchStr, function(data) {
           console.log('calling back data::', data);
-          
+          $rootScope.tracksData = data;
         });
       }
       
@@ -32,22 +32,21 @@
     
     
     .factory('spotifyAPI', ['$http', function($http) {
-      var factory = {};
+      var factory = {}
+        ,searchResults = null
+      ;
       
       factory.searchTrack = function(str, cb) {
-        var returnData = {};
         $http.get('//ws.spotify.com/search/1/track.json?q='+ str)
           .success(function(data, status, headers, config) {
-            returnData.data = data;
-            returnData.status = status;
-            cb(returnData);
+            searchResults = data;
           })
           .error(function(data, status, headers, config) {
-            returnData.data = data;
-            returnData.status = status;
-            cb(returnData);
+            searchResults = null;
           })
         ;
+        
+        return searchResults;
       };
       
       return factory;
