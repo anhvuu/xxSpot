@@ -8,9 +8,10 @@
   <base href="/_projects/xxSpot/" />
   <link href="_/master.css" rel="stylesheet" type="text/css" />
 </head>
+
 <body>
   <div class="container">
-    <form data-ng-controller="searchCtrl">
+    <form data-ng-controller="searchCtrl" data-ng-submit="searchSubmit()">
       <input type="text" data-ng-model="searchStr" /><br />
       {{searchStr}}
       
