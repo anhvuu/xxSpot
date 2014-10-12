@@ -1,8 +1,16 @@
-(function(){
+(function() {
   angular.module('xxSpot', [])
     .constant('conf', {
       dragOverClass: 'dragOver'
     })
+    
+    
+    
+    .controller('mainCtrl', ['$scope', 'spotifyAPI', function($scope, spotifyAPI) {
+
+      
+    }])
+    
     
     .controller('searchCtrl', ['$scope', 'spotifyAPI', function($scope, spotifyAPI) {
       $scope.searchStr = '';
@@ -23,22 +31,18 @@
     
     
     
-    .factory('spotifyAPI', ['$http', function($http) { 
+    .factory('spotifyAPI', ['$http', function($http) {
       var factory = {};
       
       factory.searchTrack = function(str, cb) {
         var returnData = {};
         $http.get('//ws.spotify.com/search/1/track.json?q='+ str)
           .success(function(data, status, headers, config) {
-            // this callback will be called asynchronously
-            // when the response is available
             returnData.data = data;
             returnData.status = status;
             cb(returnData);
           })
           .error(function(data, status, headers, config) {
-            // called asynchronously if an error occurs
-            // or server returns response with an error status.
             returnData.data = data;
             returnData.status = status;
             cb(returnData);

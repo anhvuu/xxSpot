@@ -9,7 +9,7 @@
   <link href="_/master.css" rel="stylesheet" type="text/css" />
 </head>
 
-<body>
+<body data-ng-controller="mainCtrl">
   <div class="container">
     <form data-ng-controller="searchCtrl" data-ng-submit="searchSubmit()">
       <input type="text" data-ng-model="searchStr" /><br />
@@ -18,11 +18,8 @@
       <div data-xx-drop-file="{joe:9}" data-search-str="searchStr" class="fileDrop"></div>
     </form>
     
-    
+    <div data-xx-tracks-list="" data-search-results="searchResults" class="xxTrackWrap"></div>
   </div>
-  
-  
-  
   
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.js"></script>
