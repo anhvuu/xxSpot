@@ -27,6 +27,10 @@
     
     .controller('searchCtrl', ['$scope', 'spotifyAPI', function($scope, spotifyAPI) {
       $scope.searchStr = '';
+      $scope.searchResults = {
+        data: null
+        ,status: null
+      };
       
       $scope.searchSubmit = function() {
         console.log('int search::: '+ $scope.searchStr);
