@@ -13,13 +13,12 @@
   <div class="container">
     <form data-ng-controller="searchCtrl" data-ng-submit="searchSubmit()">
       <input type="text" data-ng-model="searchStr" /><br />
-      {{searchStr}}
+      --{{searchStr}}--
       
       <div data-xx-drop-file="{joe:9}" data-search-str="searchStr" class="fileDrop"></div>
     </form>
     
     <div data-xx-tracks-list="" data-search-results="searchResults" class="xxTrackWrap"></div>
-    
   </div>
   
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
